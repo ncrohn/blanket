@@ -13,6 +13,11 @@
                         }
                         if(es.nodeName === "data-cover-reporter"){
                             newOptions.reporter = es.nodeValue;
+                            if(inBrowser) {
+                                require([newOptions.reporter], function (r) {
+                                    blanket.options("reporter", r);
+                                });
+                            }
                         }
                         if (es.nodeName === "data-cover-adapter"){
                             newOptions.adapter = es.nodeValue;
